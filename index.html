@@ -1,17 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>By AJAX</title>
+  <title>By .Then</title>
 </head>
 <body>
+<h1 style="text-align: center;">By fetch API</h1>
+  <h2 id="quote">Quote here</h2>
+  <p id="author">Author</p>
 
-<h2 id="quote">Quote</h2>
-<p id="author">Author</p>
-   <button width="100px" onclick="getQuote()">Get Quote</button>
-   <img src="assets/images/byajax.png" alt="By AJAX" height="300px">
-   
+  <button onclick="newQuote()">New Quote</button>
+
+<img src="by.then.png" alt="Image" width="300">
+
+
+  <script>
+    function newQuote() {
+      fetch('https://api.quotable.io/random')
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById('quote').textContent = data.content;
+          document.getElementById('author').textContent = data.author;
+        })
+        .catch(error => {
+          console.log("Error:", error);
+        });
+    }
+  </script>
+
 </body>
-<script src="assets/js/script.js"></script>
 </html>
