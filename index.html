@@ -1,31 +1,44 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>By .Then</title>
-</head>
-<body>
-<h1 style="text-align: center;">By fetch API</h1>
-  <h2 id="quote">Quote here</h2>
-  <p id="author">Author</p>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A random quote generator powered by Fetch API." />
+    <title>QuoteSpark — Random Quote Generator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <section class="quote-card" aria-labelledby="page-title">
+        <div class="card-topline">
+          <a class="brand" href="./" aria-label="QuoteSpark home">
+            <span class="brand-mark">✦</span>
+            QuoteSpark
+          </a>
+          <span class="api-badge"><span></span> Live API</span>
+        </div>
 
-  <button onclick="newQuote()">New Quote</button>
+        <div class="quote-content">
+          <p class="eyebrow">A thought for your day</p>
+          <div class="quote-mark" aria-hidden="true">“</div>
+          <blockquote id="quote" aria-live="polite">
+            The secret of getting ahead is getting started.
+          </blockquote>
+          <p id="author" class="author">— Mark Twain</p>
+        </div>
 
-<img src="by.then.png" alt="Image" width="300">
-
-
-  <script>
-    function newQuote() {
-      fetch('https://api.quotable.io/random')
-        .then(response => response.json())
-        .then(data => {
-          document.getElementById('quote').textContent = data.content;
-          document.getElementById('author').textContent = data.author;
-        })
-        .catch(error => {
-          console.log("Error:", error);
-        });
-    }
-  </script>
-
-</body>
+        <div class="card-footer">
+          <p id="status" class="status" role="status">Ready for a new perspective</p>
+          <button id="new-quote" type="button">
+            <span class="button-text">New quote</span>
+            <span aria-hidden="true">→</span>
+          </button>
+        </div>
+      </section>
+    </main>
+    <script src="script.js"></script>
+  </body>
 </html>
